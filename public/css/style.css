@@ -1,0 +1,123 @@
+a:hover{
+    text-decoration:none;
+    color:#4527a0;
+}
+
+a{
+    color:black;
+    word-wrap: break-word;
+}
+
+.panel-body{
+
+}
+
+li{
+    list-style:none;
+}
+
+p{
+    word-wrap: break-word;
+}
+
+@media (min-width: 1200px){
+    .container {
+        width: 970px;
+    }
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.icon{
+    background-size: 18px 18px;
+    background-repeat:no-repeat;
+    height: 18px;
+    padding-left: 24px;
+    margin-bottom: 15px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.user{
+    background-image: url("../svg/user.svg");
+}
+
+.male{
+    background-image: url("../svg/male.svg");
+    background-size: 25px 25px;
+    height: 25px;
+}
+
+.female{
+    background-image: url("../svg/female.svg");
+}
+
+.github{
+    background-image: url("../svg/mark-github.svg");
+}
+
+.repo{
+    background-image: url("../svg/repo.svg");
+    padding-right: 24px;
+    width: 100%;
+}
+
+.mortar-board{
+    background-image: url("../svg/mortar-board.svg");
+}
+
+.location{
+    background-image: url("../svg/location.svg");
+    background-size: 16px 18px;
+
+}
+
+
+
+.info {
+    /*padding-left: 25px;*/
+    margin-top: 15px;
+    padding-bottom: 30px;
+    /*margin: 30px auto 0px auto;*/
+    width: 150px;
+    height: 100px;
+
+}
+
+
+.list{
+
+}
+
+ ul{
+    padding: 0px;
+}
+
+.list li{
+
+    line-height:50px;
+    border-bottom: 1px solid #EEEED0;
+
+}
+
+.list li a{
+    /*float:left;*/
+    vertical-align: middle;
+    display:inline-block;
+    width: 85%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.float-right{
+    float:right;
+}
+
