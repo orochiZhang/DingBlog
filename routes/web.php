@@ -15,4 +15,5 @@
 //    return view('home');
 //});
 Route::view('/', 'home');
+Route::view('/admin', 'admin/home');
 
