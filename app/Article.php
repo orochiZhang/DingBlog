@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $fillable=['title','content','tag_id','type_id','reading'];
+    protected $fillable=['title','content','tag_id','type_id','reading','ranking'];
+
+    public function type()
+    {
+        return $this->belongsTo('App\Type');
+    }
+
 }

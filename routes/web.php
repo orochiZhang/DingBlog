@@ -17,3 +17,6 @@
 Route::view('/', 'home');
 Route::view('/admin', 'admin/home');
 
+Route::get('/article/all', 'Api\ArticleController@all');
+
+

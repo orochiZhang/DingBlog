@@ -17,9 +17,10 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('content');
-            $table->integer('tag_id');
-            $table->integer('type_id');
-            $table->integer('ranking');
+            $table->integer('tag_id')->index();
+            $table->integer('type_id')->index();
+            $table->integer('ranking')->default(0);
+            $table->integer('reading')->default(0);
             $table->timestamps();
         });
     }
