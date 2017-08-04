@@ -19,9 +19,11 @@ class ArticleController extends ApiController
     public function all()
     {
         $articles = Article::latest('created_at')->with('type')->Paginate(16);
-
-        $this->data['articles'] = $this->articleFormat->formatCollection($articles->toArray());
-        return response()->json($this->data);
+        if($articles->isEmpty()){
+            return $this->dataNotFound();
+        }
+        $data = $this->articleFormat->formatCollection($articles->toArray());
+        return $this->responseJson($data,'articles');
     }
 
     public function showByTag($id)

@@ -6,34 +6,37 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
-    protected $data;
-
     public function __construct()
     {
-        $this->data['code']=200;
-        $this->data['message']='success';
+
     }
 
     public function dataNotFound()
     {
-        $this->data['code']=404;
-        $this->data['message']='data not found';
+        $data['code']=404;
+        $data['message']='data not found';
+        return response()->json($data);
     }
 
     public function unauthorized()
     {
-        $this->data['code']=401;
-        $this->data['message']='unauthorized';
+        $data['code']=401;
+        $data['message']='unauthorized';
+        return response()->json($data);
     }
 
     public function somethingWrong($message)
     {
-        $this->data['code']=500;
-        $this->data['message']=$message;
+        $data['code']=500;
+        $data['message']=$message;
+        return response()->json($data);
     }
 
-    public function pushData($item)
+    public function responseJson($value,$key='data')
     {
-        array_push($this->data,$item);
+        $data['code']=200;
+        $data['message']='success';
+        $data[$key]=$value;
+        return response()->json($data);
     }
 }

@@ -11,7 +11,7 @@ class ArticleFormat extends Format
             'id'=>$item['id'],
             'title'=>$item['title'],
             'type'=>$item['type']['name'],
-            'created_at'=>$item['created_at'],
+            'created_at'=>date('Y-m-d', strtotime($item['created_at'])),
         ];
     }
 }
