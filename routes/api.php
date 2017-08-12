@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['namespace' => 'Api'],function ($router){
+    $router->get('/tag/all', 'TagController@all');
+    $router->get('/article/all', 'ArticleController@all');
+    $router->get('/article/tag/{id}', 'ArticleController@showByTag');
+});

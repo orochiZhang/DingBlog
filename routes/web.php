@@ -15,8 +15,11 @@
 //    return view('home');
 //});
 Route::view('/', 'home');
+
 Route::view('/admin', 'admin/home');
 
-Route::get('/article/all', 'Api\ArticleController@all');
+Route::get('/article/tag/{id}', 'Home\ArticleController@showByTag');
+Route::get('/article/{id}', 'Home\ArticleController@show');
+
 
 

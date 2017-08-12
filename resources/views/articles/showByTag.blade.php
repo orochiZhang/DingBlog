@@ -1,15 +1,10 @@
 @extends('layouts.app')
 
-@section('title')
-    DingBlog
-@endsection
-
 @section('content')
 
     <div class="container">
         <div class="row">
-            <article-list url="/api/article/all"></article-list>
-
+            <article-list url="/api/article/tag/{{$id}}"></article-list>
             <div class="col-md-4">
                 <div class="panel panel-default">
 

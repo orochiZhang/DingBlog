@@ -11,10 +11,10 @@ class ApiController extends Controller
 
     }
 
-    public function dataNotFound()
+    public function dataNotFound($item='')
     {
         $data['code']=404;
-        $data['message']='data not found';
+        $data['message']=$item.' data not found';
         return response()->json($data);
     }
 
@@ -32,11 +32,13 @@ class ApiController extends Controller
         return response()->json($data);
     }
 
-    public function responseJson($value,$key='data')
+    public function responseJson($array)
     {
         $data['code']=200;
         $data['message']='success';
-        $data[$key]=$value;
+        foreach ($array as $key => $value){
+            $data[$key]=$value;
+        }
         return response()->json($data);
     }
 }

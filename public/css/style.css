@@ -1,6 +1,14 @@
+/*------全局html标签样式-------*/
+html,body{
+    font-weight: 300;
+}
 a:hover{
     text-decoration:none;
     color:#4527a0;
+}
+
+a:focus{
+    text-decoration: none
 }
 
 a{
@@ -8,8 +16,9 @@ a{
     word-wrap: break-word;
 }
 
-.panel-body{
-
+img{
+    max-width: 100%;
+    height: auto;
 }
 
 li{
@@ -20,10 +29,26 @@ p{
     word-wrap: break-word;
 }
 
+/*------复写bootstrap样式-------*/
+
 @media (min-width: 1200px){
     .container {
         width: 970px;
     }
+}
+
+.pagination > li > a{
+    color:#4527a0;
+}
+
+.pagination > .active > a {
+    background-color: #4527a0;
+    border-color: #4527a0;
+}
+
+/*------自定义样式-------*/
+.label-theme{
+    background-color: #4527a0;
 }
 
 .avatar {
@@ -34,6 +59,7 @@ p{
     border-radius: 50%;
 }
 
+/*------icon样式-------*/
 .icon{
     background-size: 18px 18px;
     background-repeat:no-repeat;
@@ -79,18 +105,17 @@ p{
 
 }
 
-
+/*------个人信息样式-------*/
 
 .info {
-    /*padding-left: 25px;*/
     margin-top: 15px;
     padding-bottom: 30px;
-    /*margin: 30px auto 0px auto;*/
     width: 150px;
     height: 100px;
 
 }
 
+/*------文章列表样式-------*/
 
 .list{
 
@@ -101,10 +126,8 @@ p{
 }
 
 .list li{
-
     line-height:50px;
     border-bottom: 1px solid #EEEED0;
-
 }
 
 .list li a{
@@ -119,6 +142,26 @@ p{
 
 .float-right{
     float:right;
+}
+
+/*------标签列表样式-------*/
+
+.tag-list{
+
+}
+
+.tag-list li{
+    line-height:40px;
+    border-bottom: 1px solid #EEEED0;
+}
+
+.tag-list li a{
+    vertical-align: middle;
+    display:inline-block;
+    width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 /*禁止触发li点击事件*/

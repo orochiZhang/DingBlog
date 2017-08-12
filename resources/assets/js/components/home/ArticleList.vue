@@ -1,7 +1,7 @@
 <template>
     <div class="col-md-8">
         <div class="panel panel-default" id="articles">
-            <div class="panel-heading">最近动态</div>
+            <div class="panel-heading">{{tag.name}}</div>
             <div class="panel-body">
                 <ul class="list" v-if="haveData()">
                     <li v-for="article in articles.data">
@@ -13,7 +13,7 @@
                         <span class="hidden-xs float-right">{{article.created_at}}</span>
                     </li>
                 </ul>
-                <div v-else="">没有数据</div>
+                <div v-else="">你找到一个不存在的分类，没有数据</div>
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
                         <li v-bind:class="isFirst()">
@@ -43,9 +43,10 @@
         name: 'articles',
         data(){
             return {
-                articles: [] ,code: 404,
+                articles: [] , tag: [], code: 404,
             }
         },
+        props: ['url'],
         mounted() {
             this.getDataList(1);
         },
@@ -53,14 +54,23 @@
             getDataList(n){
                 document.getElementById('spinner').style.display="block";
                 document.getElementById('app').style.display="none";
-                axios.get('/article/all',{params: {page: n}}).then((response) =>{
+                axios.get(this.url,{params: {page: n}}).then((response) =>{
                     console.log(response.data);
                     if(response.data.code==200){
                         this.code=200;
                         this.articles=response.data.articles;
+                        if(response.data.tag!=null){
+                            this.tag=response.data.tag;
+                            document.title=response.data.tag.name;
+                        }else{
+                            this.tag.name="最新动态";
+                        }
+
                     }else{
                         this.code=response.data.code;
-                        alert(response.data.message);
+                        this.tag.name="你找到一个不存在的分类";
+                        console.log(this.tag.name);
+                        //alert(response.data.message);
                     }
                     document.getElementById('spinner').style.display="none";
                     document.getElementById('app').style.display="block";
@@ -77,8 +87,8 @@
                 return {
                     'label-warning': ranking > 0,
                     'label-default': type=='转载',
-                    'label-success':type=='分享'||type=='教程',
-                    'label-primary':type=='翻译'
+                    'label-success': type=='分享'||type=='教程',
+                    'label-primary': type=='翻译'
                 }
             },
             nextPage(){
