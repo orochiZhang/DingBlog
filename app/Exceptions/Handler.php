@@ -74,6 +74,8 @@ class Handler extends ExceptionHandler
     {
         return $request->expectsJson()
                     ? response()->json(['message' => 'Unauthenticated.'], 401)
-                    : redirect()->guest(route('login'));
+                    : view('errors.404');
+        //: redirect()->guest(route('login'));
+        //修改跳转方法，
     }
 }

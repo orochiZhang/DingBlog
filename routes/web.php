@@ -16,7 +16,14 @@
 //});
 Route::view('/', 'home');
 
-Route::view('/admin', 'admin/home');
+Route::group(['namespace' => 'Auth'],function ($router){
+    $router->get ('/login', 'LoginController@showLoginForm');
+    $router->post('/login', 'LoginController@login');
+    $router->get ('/register', 'RegisterController@showRegistrationForm');
+    $router->post('/register', 'RegisterController@register');
+});
+
+//Route::view('/admin', 'admin/home');
 
 Route::get('/article/tag/{id}', 'Home\ArticleController@showByTag');
 Route::get('/article/{id}', 'Home\ArticleController@show');
