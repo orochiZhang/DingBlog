@@ -4,8 +4,8 @@
     <main>
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
+                <h2>文章管理</h2>
                 <table class="table table-striped table-hover">
-                    <caption>Optional table caption.</caption>
                     <thead>
                     <tr>
                         <th>#</th>
@@ -41,4 +41,12 @@
         </div>
     </main>
 
+@endsection
+
+@section('script')
+    <script>
+        window.onload=function(){
+            active_item("文章管理");
+        }
+    </script>
 @endsection

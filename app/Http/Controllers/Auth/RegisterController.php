@@ -36,11 +36,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('guest');
-        $count=User::all()->count();
-        if($count>0){
-            return view('errors.404');
-        }
+        $this->middleware('auth.had');
     }
 
     /**

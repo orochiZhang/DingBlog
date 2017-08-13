@@ -29,13 +29,13 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" id="menu">
 
-                <li class="active-li"><a href="#">返回首页</a></li>
-                <li><a href="#">文章管理</a></li>
-                <li><a href="#">撰写博客</a></li>
-                <li><a href="#">个人信息</a></li>
-                <li><a href="#">网站设置</a></li>
+                <li><a href="/">返回首页</a></li>
+                <li><a href="/admin/article">文章管理</a></li>
+                <li><a href="/admin/article/create">添加文章</a></li>
+                <li><a href="/admin/profile/">个人信息</a></li>
+                <li><a href="/admin/setting/">网站设置</a></li>
                 <li data-toggle="modal" data-target="#exit">
                     <a href="#">退出登录</a>
                 </li>
@@ -54,7 +54,16 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Confirm</button>
+                    <a href="{{ url('/logout') }}"
+                       onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+                        <button type="button" class="btn btn-primary">Confirm</button>
+                    </a>
+
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -65,5 +74,18 @@
 
 </div>
 </body>
+
 <script src="/js/app.js"></script>
+<script>
+    function active_item(name){
+        var li = document.getElementById('menu').getElementsByTagName('li');
+        for(i=0;i<li.length;i++){
+
+            if(li[i].getElementsByTagName('a')[0].outerText===name){
+                li[i].className="active-li";
+            }
+        }
+    }
+</script>
+@yield('script')
 </html>

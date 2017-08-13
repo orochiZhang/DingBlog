@@ -7,9 +7,14 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
-    public function create()
+    public function __construct()
     {
 
+    }
+
+    public function create()
+    {
+        return view('admin.article.create');
     }
 
     public function store()

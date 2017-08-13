@@ -15,10 +15,12 @@
 //    return view('home');
 //});
 Route::view('/', 'home');
+Route::view('/404', 'errors.404');
 
 Route::group(['namespace' => 'Auth'],function ($router){
     $router->get ('/login', 'LoginController@showLoginForm');
     $router->post('/login', 'LoginController@login');
+    $router->post('/logout', 'LoginController@logout');
     $router->get ('/register', 'RegisterController@showRegistrationForm');
     $router->post('/register', 'RegisterController@register');
 });

@@ -104,7 +104,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="student/info">个人信息</a></li>
+                                <li><a href="/admin/article">个人信息</a></li>
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();
