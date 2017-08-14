@@ -1,4 +1,8 @@
 
+p{
+    word-wrap: break-word;
+}
+
 .container-fluid {
     padding-left: 0px;
     padding-right: 0px;
@@ -34,7 +38,7 @@ main{
     body {
         background-color: #FEFFFE;
         overflow-x: hidden;
-        overflow-y: hidden;
+        /*overflow-y: hidden;*/
     }
 
     .navbar {

@@ -13,7 +13,7 @@
     <link href="/css/admin.css" rel="stylesheet">
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid" id="app">
     <nav class="navbar navbar-default background-white">
 
         <div class="navbar-header">
