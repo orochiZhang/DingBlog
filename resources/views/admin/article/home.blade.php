@@ -7,8 +7,6 @@
                 <h2>文章管理</h2>
                 <article-manger></article-manger>
             </div>
-
-
         </div>
     </main>
 

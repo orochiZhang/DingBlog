@@ -10,16 +10,9 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
-    public function __construct()
-    {
-
-    }
-
     public function create()
     {
-        $url="/admin/article/create";
-        $article_url="";
-        return view('admin.article.create',compact('url','article_url'));
+        return view('admin.article.create');
     }
 
     public function store(Request $request)
@@ -35,15 +28,25 @@ class ArticleController extends Controller
         return redirect('/admin/article');
     }
 
-    public function update()
+    public function update($id,Request $request)
     {
-
+        $input=$request->all();
+        $article=Article::find($id);
+        $article->update($input);
+        return redirect('/admin/article');
     }
 
     public function edit($id)
     {
-        $url="/admin/article/update".$id;
-        $article_url="/admin/article/".$id;
-        return view('admin.article.edit');
+        $article=Article::find($id);
+        //dd($article);
+        return view('admin.article.edit',compact('article'));
+    }
+
+    public function destroy($id)
+    {
+        $article=Article::find($id);
+        $article->delete();
+        return redirect('/admin/article');
     }
 }

@@ -8,7 +8,7 @@
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-body" style="padding: 20px 40px">
-                            <form class="form-horizontal" method="POST" action="{{$url}}">
+                            <form class="form-horizontal" method="POST" action="/admin/article/create">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label class="control-label">Title</label>
@@ -63,8 +63,10 @@
         }
 
         function keyup(event) {
-            console.log("The new content: " + event.target.value);
-            document.getElementById('content').innerHTML = marked(event.srcElement.value);
+            //console.log("The new content: " + event.target.value);
+            console.log("The new content: " + document.getElementById('md').value);
+            //document.getElementById('content').innerHTML = marked(event.srcElement.value);
+            document.getElementById('content').innerHTML = marked(document.getElementById('md').value);
         };
     </script>
 @endsection

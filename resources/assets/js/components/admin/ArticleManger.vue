@@ -21,8 +21,15 @@
                 <td>{{article.tag}}</td>
                 <td>{{article.created_at}}</td>
                 <td>
-                    <button class="btn btn-danger">删除</button>
-                    <button class="btn btn-primary">修改</button>
+                    <button class="btn btn-danger"
+                            data-toggle="modal"
+                            data-target="#delete"
+                            :onclick="this.setDeleteId(article.id)">
+                        删除
+                    </button>
+                    <a :href="'/admin/article/update/'+article.id">
+                        <button class="btn btn-primary">修改</button>
+                    </a>
                 </td>
             </tr>
 
@@ -47,6 +54,23 @@
                 </li>
             </ul>
         </nav>
+
+        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">警告</h4>
+                    </div>
+                    <div class="modal-body">
+                        是否删除{{delete_id}}.{{delete_title}}?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--<div v-else="">没有数据</div>-->
     </div>
 </template>
@@ -56,13 +80,29 @@
         name: 'articles',
         data(){
             return {
-                articles: [] , code: 404,
+                articles: [] , code: 404, delete_id:0 ,delete_title: '',delete_index: -1,
             }
         },
         mounted() {
             this.getDataList(1);
         },
         methods:{
+            setDeleteId(id,index){
+                this.delete_id=id;
+                this.delete_index=index;
+            },
+            delete(){
+                axios.delete("/api/article/destroy/"+this.delete_id,{api_token : ''})
+                    .then((response) =>{
+                    console.log(response.data);
+                    if(response.data.code==200){
+                        this.articles.splice(this.delete_index,1);
+
+                    }else{
+                        alert(response.data.message);
+                    }
+                })
+            },
             getDataList(n){
                 axios.get("/api/article/all",{params: {page: n}}).then((response) =>{
                     console.log(response.data);

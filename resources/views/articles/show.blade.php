@@ -17,7 +17,7 @@
                         <article>
                             <div class="panel-body">
                                 <li><i class="fa fa-eye"></i>{{ $article->reading }} 浏览</li>
-                                {!! $article->content !!}
+                                <div id="content">{!! $article->content !!}</div>
                             </div>
                         </article>
                     </div>
@@ -29,8 +29,13 @@
 @endsection
 
 @section('script')
+    <link rel="stylesheet" href="/css/github-markdown.css">
+    <script src="/js/marked.js"></script>
     <script>
         window.onload=function(){
+            console.log(document.getElementById('content').innerHTML);
+            console.log(document.getElementById('content').value);
+            document.getElementById('content').innerHTML = marked(document.getElementById('content').innerHTML);
             document.getElementById('spinner').style.display="none";
             document.getElementById('app').style.display="block";
         }
