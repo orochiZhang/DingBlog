@@ -47,6 +47,8 @@ class ArticleController extends Controller
     {
         $article=Article::find($id);
         $article->delete();
-        return redirect('/admin/article');
+        //return redirect('/admin/article');
+        $data['code']=200;
+        return response()->json($data);
     }
 }

@@ -5,7 +5,8 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <h2>文章管理</h2>
-                <article-manger></article-manger>
+                {{--<p>blade:{{Auth::user()->api_token}}</p>--}}
+                <article-manger api_token={{Auth::user()->api_token}}></article-manger>
             </div>
         </div>
     </main>

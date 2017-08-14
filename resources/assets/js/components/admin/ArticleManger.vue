@@ -13,7 +13,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="article in articles.data">
+            <tr v-for="(article,index) in articles.data">
                 <th><input type="checkbox"></th>
                 <th scope="row">{{article.id}}</th>
                 <td>{{article.title}}</td>
@@ -24,7 +24,7 @@
                     <button class="btn btn-danger"
                             data-toggle="modal"
                             data-target="#delete"
-                            :onclick="this.setDeleteId(article.id)">
+                            @click="setDeleteId(article.id,index,article.title)">
                         删除
                     </button>
                     <a :href="'/admin/article/update/'+article.id">
@@ -66,6 +66,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" @click="destroy()">Confirm</button>
 
                     </div>
                 </div>
@@ -83,21 +84,26 @@
                 articles: [] , code: 404, delete_id:0 ,delete_title: '',delete_index: -1,
             }
         },
+        props: ['api_token'],
         mounted() {
             this.getDataList(1);
         },
         methods:{
-            setDeleteId(id,index){
+            setDeleteId(id,index,title){
                 this.delete_id=id;
                 this.delete_index=index;
+                this.delete_title=title;
             },
-            delete(){
-                axios.delete("/api/article/destroy/"+this.delete_id,{api_token : ''})
+            destroy(){
+                let token='Bearer '+this.api_token;
+                console.log(this.api_token);
+                console.log(token);
+
+                axios.delete("/api/article/destroy/"+this.delete_id,{headers: {'Authorization': token}})
                     .then((response) =>{
                     console.log(response.data);
                     if(response.data.code==200){
-                        this.articles.splice(this.delete_index,1);
-
+                        this.articles.data.splice(this.delete_index,1);
                     }else{
                         alert(response.data.message);
                     }

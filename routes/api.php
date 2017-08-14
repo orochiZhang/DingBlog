@@ -23,3 +23,5 @@ Route::group(['namespace' => 'Api'],function ($router){
     $router->get('/article/all', 'ArticleController@all');
     $router->get('/article/tag/{id}', 'ArticleController@showByTag');
 });
+
+Route::middleware('auth:api')->delete('/article/destroy/{id}', 'Admin\ArticleController@destroy');
