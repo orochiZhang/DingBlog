@@ -9,7 +9,7 @@
 
     <!-- Fonts -->
     {{--<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">--}}
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{elixir('/css/app.css')}}" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
 
     <!-- Styles -->
@@ -129,5 +129,5 @@
 </div>
 </body>
 @yield('script')
-<script src="/js/app.js"></script>
+<script src="{{elixir('/js/app.js')}}"></script>
 </html>
