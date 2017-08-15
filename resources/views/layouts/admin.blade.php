@@ -9,7 +9,7 @@
 
     <!-- Fonts -->
     {{--<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">--}}
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{elixir('/css/app.css')}}" rel="stylesheet">
     <link href="/css/admin.css" rel="stylesheet">
 </head>
 <body>
@@ -75,7 +75,7 @@
 </div>
 </body>
 
-<script src="/js/app.js"></script>
+<script src="{{elixir('/js/app.js')}}"></script>
 <script>
     function active_item(name){
         var li = document.getElementById('menu').getElementsByTagName('li');
