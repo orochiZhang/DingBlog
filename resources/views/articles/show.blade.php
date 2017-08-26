@@ -33,9 +33,9 @@
     <script src="/js/marked.js"></script>
     <script>
         window.onload=function(){
-            console.log(document.getElementById('content').innerHTML);
-            console.log(document.getElementById('content').value);
-            document.getElementById('content').innerHTML = marked(document.getElementById('content').innerHTML);
+//            console.log(document.getElementById('content').innerHTML);
+//            console.log(document.getElementById('content').value);
+//            document.getElementById('content').innerHTML = marked(document.getElementById('content').innerHTML);
             document.getElementById('spinner').style.display="none";
             document.getElementById('app').style.display="block";
         }

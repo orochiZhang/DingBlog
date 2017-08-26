@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Article;
+use Parsedown;
 
 class ArticleController extends Controller
 {
@@ -16,7 +17,9 @@ class ArticleController extends Controller
         }catch (ModelNotFoundException $e){
             return view('errors.404');
         }
+        $parseDown = new Parsedown();
 
+        $article->content=$parseDown->text($article->content);
         return view('articles.show',compact('article'));
     }
 
