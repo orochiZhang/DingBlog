@@ -158,7 +158,7 @@ p{
 .tag-list li a{
     vertical-align: middle;
     display:inline-block;
-    width: 90%;
+    width: 88%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
