@@ -32,6 +32,7 @@
             <ul class="nav navbar-nav" id="menu">
 
                 <li><a href="/">返回首页</a></li>
+                <li><a href="/admin/tag">标签管理</a></li>
                 <li><a href="/admin/article">文章管理</a></li>
                 <li><a href="/admin/article/create">添加文章</a></li>
                 <li><a href="/admin/profile/">个人信息</a></li>

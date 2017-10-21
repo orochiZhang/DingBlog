@@ -16,5 +16,8 @@ Route::post('/article/create', 'Admin\ArticleController@store');
 Route::put('/article/update/{id}', 'Admin\ArticleController@update');
 Route::get('/article/update/{id}', 'Admin\ArticleController@edit');
 
+Route::get('/tag/', 'Admin\TagController@index');
+Route::post('/tag/create', 'Admin\TagController@store');
+
 
 
