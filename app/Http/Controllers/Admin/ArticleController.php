@@ -32,6 +32,22 @@ class ArticleController extends Controller
     {
         $input=$request->all();
         $article=Article::find($id);
+        if($article->tag_id!=$input->tag_id){
+            $tag=Tag::find($article->tag_id);
+            $tag->count--;
+            $tag->save();
+            $newTag=Tag::find($input->tag_id);
+            $newTag->count++;
+            $newTag->save();
+        }
+        if($article->type_id!=$input->type_id){
+            $type=Type::find($article->type_id);
+            $type->count--;
+            $type->save();
+            $netType=Type::find($input->type_id);
+            $netType->count++;
+            $netType->save();
+        }
         $article->update($input);
         return redirect('/admin/article');
     }
