@@ -16,7 +16,7 @@
             <tr v-for="(article,index) in articles.data">
                 <th><input type="checkbox"></th>
                 <th scope="row">{{article.id}}</th>
-                <td><a :href="'/article/show/'+article.id">{{article.title}}</a></td>
+                <td><a :href="'/article/'+article.id">{{article.title}}</a></td>
                 <td>{{article.type}}</td>
                 <td>{{article.tag}}</td>
                 <td>{{article.created_at}}</td>
