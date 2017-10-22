@@ -12,8 +12,8 @@ Route::view('/profile', 'admin/profile');
 Route::group(['namespace' => 'Admin'],function ($router){
     $router->get('/article', 'ArticleController@index');
     $router->get('/article/page/{page}', 'ArticleController@index');
-    $router->get('/article/tag/{id}', 'ArticleController@index');
-    $router->get('/article/tag/{id}/page/{page}', 'ArticleController@index');
+    $router->get('/article/tag/{id}', 'ArticleController@showByTag');
+    $router->get('/article/tag/{id}/page/{page}', 'ArticleController@showByTag');
     $router->get('/article/create', 'ArticleController@create');
     $router->post('/article/create', 'ArticleController@store');
 

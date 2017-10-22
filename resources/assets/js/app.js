@@ -19,6 +19,7 @@ Vue.component('example', require('./components/Example.vue'));
 Vue.component('page-nav', require('./components/PageNav.vue'));
 Vue.component('article-list', require('./components/home/ArticleList.vue'));
 Vue.component('tag-list', require('./components/home/TagList.vue'));
+Vue.component('tag-select', require('./components/TagSelect.vue'));
 
 Vue.component('article-manger', require('./components/admin/ArticleManger.vue'));
 Vue.component('article-form', require('./components/admin/ArticleForm.vue'));

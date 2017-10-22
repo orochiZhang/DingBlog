@@ -12,16 +12,18 @@ class ArticleController extends Controller
 {
     public function index($page=1)
     {
+        $tag_id=0;
         $api="/api/article/all";
         $url="/admin/article/page/";
-        return view('admin/article/home',compact('api','page','url'));
+        return view('admin/article/home',compact('api','page','url','tag_id'));
     }
 
     public function showByTag($id,$page=1)
     {
-        $api="/article/tag/".$id;
+        $tag_id=$id;
+        $api="/api/article/tag/".$id;
         $url="/admin/article/tag/".$id."/page/";
-        return view('admin/article/home',compact('api','page','url'));
+        return view('admin/article/home',compact('api','page','url','tag_id'));
     }
 
     public function create()
