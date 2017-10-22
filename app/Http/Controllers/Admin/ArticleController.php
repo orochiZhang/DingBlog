@@ -62,9 +62,18 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         $article=Article::find($id);
-        $article->delete();
-        //return redirect('/admin/article');
-        $data['code']=200;
-        return response()->json($data);
+        if($article!=null){
+            $tag=Tag::find($article->tag_id);
+            $tag->count--;
+            $tag->update();
+
+            $article->delete();
+            $data['code']=200;
+            return response()->json($data);
+        }else{
+            $data['code']=404;
+            $data['message']='article not found';
+            return response()->json($data);
+        }
     }
 }
