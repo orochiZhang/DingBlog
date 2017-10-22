@@ -45,4 +45,15 @@ class ArticleController extends ApiController
         $data = $this->articleFormat->formatCollection($articles->toArray());
         return $this->responseJson(['tag'=>$tag,'articles'=>$data]);
     }
+
+    public function read($id){
+        $article=Article::find($id);
+        if($article!=null){
+            $article->reading++;
+            $article->update();
+            return $this->responseJson();
+        }else{
+            return $this->dataNotFound();
+        }
+    }
 }

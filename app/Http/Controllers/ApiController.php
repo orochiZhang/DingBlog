@@ -32,12 +32,14 @@ class ApiController extends Controller
         return response()->json($data);
     }
 
-    public function responseJson($array)
+    public function responseJson($array=null)
     {
         $data['code']=200;
         $data['message']='success';
-        foreach ($array as $key => $value){
-            $data[$key]=$value;
+        if($array!=null){
+            foreach ($array as $key => $value){
+                $data[$key]=$value;
+            }
         }
         return response()->json($data);
     }
