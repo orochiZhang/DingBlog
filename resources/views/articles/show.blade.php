@@ -38,6 +38,27 @@
 //            document.getElementById('content').innerHTML = marked(document.getElementById('content').innerHTML);
             document.getElementById('spinner').style.display="none";
             document.getElementById('app').style.display="block";
+            read({{ $article->id }});
+        }
+
+        function read(id){
+            if(sessionStorage.getItem(id)!=='read'){
+                $.ajax({
+                    type: "POST",
+                    url: "/api/article/read/"+id,
+                    dataType: "json",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    },
+                    success: function(data){
+                        console.log(data);
+                        sessionStorage.setItem(id,'read');
+                    },
+                    error: function(xhr, type){
+                        console.log('Ajax error!');
+                    }
+                });
+            }
         }
     </script>
 @endsection

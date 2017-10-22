@@ -9,9 +9,8 @@ Route::view('/setting', 'admin/setting');
 Route::view('/profile', 'admin/profile');
 Route::view('/article', 'admin/article/home');
 
-
-
 Route::group(['namespace' => 'Admin'],function ($router){
+    $router->get('/article/page/{page}', 'ArticleController@index');
     $router->get('/article/create', 'ArticleController@create');
     $router->post('/article/create', 'ArticleController@store');
 

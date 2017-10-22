@@ -10,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
+    public function index($page)
+    {
+
+    }
+
     public function create()
     {
         return view('admin.article.create');
