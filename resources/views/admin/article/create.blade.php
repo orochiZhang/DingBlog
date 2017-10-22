@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="panel panel-default" id="content"
-                         style="height: 500px;padding: 10px">
+                         style="min-height: 500px;padding: 10px">
 
                     </div>
                 </div>
