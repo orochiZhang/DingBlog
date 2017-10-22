@@ -10,6 +10,20 @@ use Parsedown;
 
 class ArticleController extends Controller
 {
+    public function all($page=1)
+    {
+        $api="/api/article/all/";
+        $url="/article/all/page/";
+        return view('home',compact('page','api','url'));
+    }
+
+    public function showByTag($id,$page=1)
+    {
+        $api="/api/article/tag/".$id;
+        $url="/article/tag/".$id."/page/";
+        return view('articles.showByTag',compact('page','api','url'));
+    }
+
     public function show($id)
     {
         try{
@@ -23,8 +37,5 @@ class ArticleController extends Controller
         return view('articles.show',compact('article'));
     }
 
-    public function showByTag($id)
-    {
-        return view('articles.showByTag',compact('id'));
-    }
+
 }

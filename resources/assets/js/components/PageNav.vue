@@ -8,7 +8,7 @@
             </li>
             <li v-for="n in last_page"
                 v-bind:class="isCurrentPage(n)">
-                <a :href="url+n" @click="getDataList(n)">{{n}}</a>
+                <a :href="url+n">{{n}}</a>
             </li>
 
             <li v-if="notLast()">
@@ -33,10 +33,6 @@
         },
         methods:{
             init(){
-                console.log(this.per_page);
-                console.log(this.url);
-                console.log(this.last_page);
-                console.log(this.current_page);
                 this.per_page=this.current_page-1;
                 this.next_page=this.current_page+1;
             },

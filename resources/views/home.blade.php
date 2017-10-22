@@ -8,7 +8,7 @@
 
     <div class="container">
         <div class="row">
-            <article-list url="/api/article/all"></article-list>
+            <article-list url="{{$url}}" page="{{$page}}" api="{{$api}}"></article-list>
 
             <div class="col-md-4">
                 <div class="panel panel-default">
@@ -22,13 +22,6 @@
                                 <h3>dingding</h3>
 
                                 <div class="icon male" aria-hidden="true"></div>
-
-                                {{--<div class="icon github" aria-hidden="true">--}}
-                                {{--<a href="https://github.com/orochizzzzzzz">--}}
-                                {{--dingding</a>--}}
-                                {{--</div>--}}
-                                {{--<div class="icon location" aria-hidden="true">云浮</div>--}}
-                                {{--<div class="icon mortar-board" aria-hidden="true">广东海洋大学</div>--}}
                             </div>
                         </div>
 
@@ -42,44 +35,6 @@
 
                 <tag-list></tag-list>
 
-                {{--<div class="panel panel-default">--}}
-                    {{--<div class="panel-heading">My github repositories</div>--}}
-                    {{--<div class="panel-body">--}}
-                        {{--<ul>--}}
-                            {{--<li>--}}
-                                {{--<div class="icon repo" aria-hidden="true">--}}
-                                    {{--<a href="content.html">广东海洋大学团委老师联系方式</a>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                            {{--<li>--}}
-                                {{--<div class="icon repo" aria-hidden="true">--}}
-                                    {{--<a href="content.html">温馨提示（校团委办事流程介绍）</a>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                            {{--<li>--}}
-                                {{--<div class="icon repo" aria-hidden="true">--}}
-                                    {{--<a href="content.html">--}}
-                                        {{--2015年广东海洋大学优秀志愿服务项目与先进集体、个人名单公示--}}
-                                    {{--</a>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                            {{--<li>--}}
-                                {{--<div class="icon repo" aria-hidden="true">--}}
-                                    {{--<a href="content.html">--}}
-                                        {{--2015年广东海洋大学星级志愿者名单公示--}}
-                                    {{--</a>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                            {{--<li>--}}
-                                {{--<div class="icon repo" aria-hidden="true">--}}
-                                    {{--<a href="content.html">--}}
-                                        {{--广东海洋大学第十七届“精品团日”活动获奖名单公示--}}
-                                    {{--</a>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
             </div>
         </div>
     </div>

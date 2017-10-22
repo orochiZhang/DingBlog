@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="row">
-            <article-list url="/api/article/tag/{{$id}}"></article-list>
+            <article-list url="{{$url}}" page="{{$page}}" api="{{$api}}"></article-list>
             <div class="col-md-4">
                 <div class="panel panel-default">
 
@@ -18,12 +18,6 @@
 
                                 <div class="icon male" aria-hidden="true"></div>
 
-                                {{--<div class="icon github" aria-hidden="true">--}}
-                                {{--<a href="https://github.com/orochizzzzzzz">--}}
-                                {{--dingding</a>--}}
-                                {{--</div>--}}
-                                {{--<div class="icon location" aria-hidden="true">云浮</div>--}}
-                                {{--<div class="icon mortar-board" aria-hidden="true">广东海洋大学</div>--}}
                             </div>
                         </div>
 

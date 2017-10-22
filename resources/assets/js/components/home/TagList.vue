@@ -29,7 +29,7 @@
         methods: {
             getDataList(){
                 axios.get("/api/tag/all").then((response) =>{
-                    console.log(response.data);
+                    //console.log(response.data);
                     if(response.data.code==200){
                         this.code=200;
                         this.tags=response.data.tags;

@@ -11,11 +11,15 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('home');
-//});
-Route::view('/', 'home');
 Route::view('/404', 'errors.404');
+
+Route::group(['namespace' => 'Home'],function ($router) {
+    $router->get('/', 'ArticleController@all');
+    $router->get('/article/all/page/{page}', 'ArticleController@all');
+    $router->get('/article/tag/{id}', 'ArticleController@showByTag');
+    $router->get('/article/{id}', 'ArticleController@show');
+});
+
 
 Route::group(['namespace' => 'Auth'],function ($router){
     $router->get ('/login', 'LoginController@showLoginForm');
@@ -25,10 +29,8 @@ Route::group(['namespace' => 'Auth'],function ($router){
     $router->post('/register', 'RegisterController@register');
 });
 
-//Route::view('/admin', 'admin/home');
 
-Route::get('/article/tag/{id}', 'Home\ArticleController@showByTag');
-Route::get('/article/{id}', 'Home\ArticleController@show');
+
 
 
 
