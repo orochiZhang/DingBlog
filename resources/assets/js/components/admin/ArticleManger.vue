@@ -55,33 +55,27 @@
             </ul>
         </nav>
 
-        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">警告</h4>
-                    </div>
-                    <div class="modal-body">
-                        是否删除{{delete_id}}.{{delete_title}}?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" @click="destroy()">Confirm</button>
-
-                    </div>
-                </div>
+        <modal id="modal-demo-1" ref="modal1" v-model="openDelete" title="Modal 1" >
+            <span slot="title"> 警告</span>
+            <p>是否删除{{delete_id}}.{{delete_title}}?</p>
+            <div slot="footer">
+                <button type="button" class="btn btn-default" @click="openDelete=false">Cancel</button>
+                <button type="button" class="btn btn-danger"  @click="destroy()">Confirm</button>
             </div>
-        </div>
+        </modal>
+
         <!--<div v-else="">没有数据</div>-->
     </div>
 </template>
 
 <script>
+    import { Alert } from 'uiv'
     export default {
         name: 'articles',
         data(){
             return {
-                articles: [] , code: 404, delete_id:0 ,delete_title: '',delete_index: -1,
+                articles: [] , code: 404, openDelete: false,
+                delete_id:0 ,delete_title: '',delete_index: -1,
             }
         },
         props: ['api_token'],
@@ -93,17 +87,19 @@
                 this.delete_id=id;
                 this.delete_index=index;
                 this.delete_title=title;
+                this.openDelete=true;
             },
             destroy(){
                 let token='Bearer '+this.api_token;
                 console.log(this.api_token);
                 console.log(token);
 
-                axios.delete("/api/article/destroy/"+this.delete_id,{headers: {'Authorization': token}})
+                axios.delete("/admin/article/destroy/"+this.delete_id,{headers: {'Authorization': token}})
                     .then((response) =>{
                     console.log(response.data);
                     if(response.data.code==200){
                         this.articles.data.splice(this.delete_index,1);
+                        this.openDelete=false;
                     }else{
                         alert(response.data.message);
                     }

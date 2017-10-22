@@ -9,15 +9,17 @@ Route::view('/setting', 'admin/setting');
 Route::view('/profile', 'admin/profile');
 Route::view('/article', 'admin/article/home');
 
-Route::get('/article/create', 'Admin\ArticleController@create');
-Route::post('/article/create', 'Admin\ArticleController@store');
 
 
-Route::put('/article/update/{id}', 'Admin\ArticleController@update');
-Route::get('/article/update/{id}', 'Admin\ArticleController@edit');
+Route::group(['namespace' => 'Admin'],function ($router){
+    $router->get('/article/create', 'ArticleController@create');
+    $router->post('/article/create', 'ArticleController@store');
 
-Route::get('/tag/', 'Admin\TagController@index');
-Route::post('/tag/create', 'Admin\TagController@store');
+    $router->put('/article/update/{id}', 'ArticleController@update');
+    $router->get('/article/update/{id}', 'ArticleController@edit');
+    $router->delete('/article/destroy/{id}', 'ArticleController@destroy');
 
-
+    $router->get('/tag/', 'TagController@index');
+    $router->post('/tag/create', 'TagController@store');
+});
 
