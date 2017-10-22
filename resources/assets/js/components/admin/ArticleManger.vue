@@ -16,7 +16,7 @@
             <tr v-for="(article,index) in articles.data">
                 <th><input type="checkbox"></th>
                 <th scope="row">{{article.id}}</th>
-                <td>{{article.title}}</td>
+                <td><a :href="'/article/show/'+article.id">{{article.title}}</a></td>
                 <td>{{article.type}}</td>
                 <td>{{article.tag}}</td>
                 <td>{{article.created_at}}</td>
@@ -35,25 +35,13 @@
 
             </tbody>
         </table>
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-                <li v-bind:class="isFirst()">
-                    <a href="#" @click="perPage()" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li v-for="n in articles.last_page"
-                    v-bind:class="isCurrentPage(n)">
-                    <a href="#" @click="getDataList(n)">{{n}}</a>
-                </li>
 
-                <li v-bind:class="isLast()">
-                    <a href="#" @click="nextPage()" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+
+        <page-nav :url="url"
+                  :last_page="articles.last_page"
+                  :current_page="articles.current_page">
+
+        </page-nav>
 
         <modal id="modal-demo-1" ref="modal1" v-model="openDelete" title="Modal 1" >
             <span slot="title"> 警告</span>
@@ -69,7 +57,7 @@
 </template>
 
 <script>
-    import { Alert } from 'uiv'
+    import { Alert } from 'uiv';
     export default {
         name: 'articles',
         data(){
@@ -78,9 +66,9 @@
                 delete_id:0 ,delete_title: '',delete_index: -1,
             }
         },
-        props: ['api_token'],
+        props: ['api_token','api','url','page'],
         mounted() {
-            this.getDataList(1);
+            this.getDataList(this.page);
         },
         methods:{
             setDeleteId(id,index,title){
@@ -91,9 +79,8 @@
             },
             destroy(){
                 let token='Bearer '+this.api_token;
-                console.log(this.api_token);
-                console.log(token);
-
+//                console.log(this.api_token);
+//                console.log(token);
                 axios.delete("/admin/article/destroy/"+this.delete_id,{headers: {'Authorization': token}})
                     .then((response) =>{
                     console.log(response.data);
@@ -106,8 +93,8 @@
                 })
             },
             getDataList(n){
-                axios.get("/api/article/all",{params: {page: n}}).then((response) =>{
-                    console.log(response.data);
+                axios.get(this.api,{params: {page: n}}).then((response) =>{
+                    //console.log(response.data);
                     if(response.data.code==200){
                         this.code=200;
                         this.articles=response.data.articles;
@@ -124,35 +111,7 @@
                     return false;
                 }
             },
-            nextPage(){
-                if (this.articles.current_page != this.articles.last_page) {
-                    this.getDataList(this.articles.current_page + 1);
-                }
-            },
-            perPage(){
-                if (this.articles.current_page != 1) {
-                    this.getDataList(this.articles.current_page - 1);
-                }
-            },
-            isCurrentPage(n) {
-                return {
-                    'active none-pointer': n == this.articles.current_page,
-                    '': n != this.articles.current_page,
-                }
-            },
-            isFirst(n){
-                return {
-                    disabled: this.articles.current_page == 1,
-                    '': this.articles.current_page != 1,
-                }
-            },
-            isLast(n){
-                return {
-                    disabled: this.articles.current_page == this.articles.last_page,
-                    '': this.articles.current_page != this.articles.last_page,
-                }
-            }
+        },
 
-        }
     }
 </script>

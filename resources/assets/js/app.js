@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('page-nav', require('./components/PageNav.vue'));
 Vue.component('article-list', require('./components/home/ArticleList.vue'));
 Vue.component('tag-list', require('./components/home/TagList.vue'));
 

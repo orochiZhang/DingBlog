@@ -10,9 +10,18 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
-    public function index($page)
+    public function index($page=1)
     {
+        $api="/api/article/all";
+        $url="/admin/article/page/";
+        return view('admin/article/home',compact('api','page','url'));
+    }
 
+    public function showByTag($id,$page=1)
+    {
+        $api="/article/tag/".$id;
+        $url="/admin/article/tag/".$id."/page/";
+        return view('admin/article/home',compact('api','page','url'));
     }
 
     public function create()

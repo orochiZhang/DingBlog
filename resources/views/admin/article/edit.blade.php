@@ -60,6 +60,7 @@
         window.onload = function () {
             getTags({{$article->tag_id}});
             getTypes({{$article->type_id}});
+            document.getElementById('content').innerHTML = marked(document.getElementById('md').value);
         }
 
         function keyup(event) {
