@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="_token" content="{{ csrf_token() }}"/>
+    <meta name="generator" content="{{ env('META_GENERATOR', 'Laravel5.5') }}">
+    <meta name="description" content="{{ env('META_DESCRIPTION', 'Laravel') }}">
+    <meta name="keywords" content="{{ env('META_KEYWORDS', 'Laravel') }}">
+    <meta name="author" content="{{ env('META_AUTHOR', 'EdwardZhang') }}">
     <title>@yield('title')</title>
 
     <!-- Fonts -->
