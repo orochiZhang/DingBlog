@@ -10,7 +10,7 @@ class TagController extends ApiController
 {
     public function all()
     {
-        $tags=Tag::all();
+        $tags=Tag::latest('count')->get();
         if($tags->isEmpty()){
             return $this->dataNotFound();
         }
