@@ -29,6 +29,11 @@ p{
     word-wrap: break-word;
 }
 
+td, th {
+    border: 1px solid #666;
+    padding: 10px;
+}
+
 /*------复写bootstrap样式-------*/
 
 @media (min-width: 1200px){
