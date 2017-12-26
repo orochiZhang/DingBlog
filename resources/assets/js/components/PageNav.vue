@@ -2,7 +2,7 @@
     <nav aria-label="Page navigation">
         <ul class="pagination" v-if="last_page!==undefined">
             <li v-if="notFirst()">
-                <a :href="url+per_page" aria-label="Previous">
+                <a :href="url+(current_page-1)" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
@@ -12,7 +12,7 @@
             </li>
 
             <li v-if="notLast()">
-                <a :href="url+next_page" aria-label="Next">
+                <a :href="url+(current_page+1)" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
@@ -28,14 +28,7 @@
             }
         },
         props: ['last_page','url','current_page'],
-        mounted() {
-            this.init();
-        },
         methods:{
-            init(){
-                this.per_page=this.current_page-1;
-                this.next_page=this.current_page+1;
-            },
             notFirst(){
                 return this.current_page == 1 ? false : true;
             },
