@@ -20,7 +20,7 @@ class ArticleController extends ApiController
 
     public function all()
     {
-        $articles = Article::latest('created_at')->with('type')->Paginate(16);
+        $articles = Article::latest('created_at')->with('type')->with('tag')->Paginate(16);
         if($articles->isEmpty()){
             return $this->dataNotFound();
         }

@@ -10,7 +10,9 @@ class ArticleFormat extends Format
         return [
             'id'=>$item['id'],
             'title'=>$item['title'],
+            'reading'=>$item['reading'],
             'type'=>$item['type']['name'],
+            'tag'=>$item['tag']['name'],
             'created_at'=>date('Y-m-d', strtotime($item['created_at'])),
         ];
     }

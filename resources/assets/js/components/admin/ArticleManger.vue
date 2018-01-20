@@ -3,22 +3,24 @@
         <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th><input type="checkbox"></th>
+                <!--<th><input type="checkbox"></th>-->
                 <th>id</th>
                 <th>title</th>
                 <th>type</th>
                 <th>tag</th>
+                <th>reading</th>
                 <th>created_at</th>
                 <th>option</th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="(article,index) in articles.data">
-                <th><input type="checkbox"></th>
+                <!--<th><input type="checkbox"></th>-->
                 <th scope="row">{{article.id}}</th>
                 <td><a :href="'/article/'+article.id">{{article.title}}</a></td>
                 <td>{{article.type}}</td>
                 <td>{{article.tag}}</td>
+                <td>{{article.reading}}</td>
                 <td>{{article.created_at}}</td>
                 <td>
                     <button class="btn btn-danger"
