@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "laravel-mix": "^1.5.1",
-    "uiv": "^0.12.0"
+    "laravel-mix": "^1.7.2",
+    "uiv": "^0.12.3"
   }
 }
