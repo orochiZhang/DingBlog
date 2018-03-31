@@ -133,6 +133,6 @@
 </div>
 </body>
 @yield('script')
-<script src="cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
 <script src="{{elixir('/js/app.js')}}"></script>
 </html>
