@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Format\ArticleFormat;
+use App\Format\ArticleByTagFormat;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
@@ -28,7 +29,7 @@ class ArticleController extends ApiController
         return $this->responseJson(['articles'=>$data]);
     }
 
-    public function showByTag($id)
+    public function showByTag($id,ArticleByTagFormat $articleFormat)
     {
         try{
             $tag = Tag::findOrFail($id);
@@ -42,7 +43,7 @@ class ArticleController extends ApiController
             return $this->dataNotFound();
         }
 
-        $data = $this->articleFormat->formatCollection($articles->toArray());
+        $data = $articleFormat->formatCollection($articles->toArray());
         return $this->responseJson(['tag'=>$tag,'articles'=>$data]);
     }
 

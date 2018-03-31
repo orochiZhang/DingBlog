@@ -17,6 +17,7 @@ Route::group(['namespace' => 'Home'],function ($router) {
     $router->get('/', 'ArticleController@all');
     $router->get('/article/all/page/{page}', 'ArticleController@all');
     $router->get('/article/tag/{id}', 'ArticleController@showByTag');
+    $router->get('/article/tag/{id}/page/{page}', 'ArticleController@showByTag');
     $router->get('/article/{id}', 'ArticleController@show');
 });
 
@@ -28,9 +29,3 @@ Route::group(['namespace' => 'Auth'],function ($router){
     $router->get ('/register', 'RegisterController@showRegistrationForm');
     $router->post('/register', 'RegisterController@register');
 });
-
-
-
-
-
-
